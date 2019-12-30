@@ -39,7 +39,6 @@
     }.bind(this);
 
     changeOption(e) {
-        console.log($this.forms.some(f => f.value === e.target.value), $this.forms.find(f => f.value === e.target.value))
         if ($this.forms && $this.forms.some(f => f.value === e.target.value)) {
             $this.value = $this.forms.find(f => f.value === e.target.value).value;
             $this.$setValue($this.value);
