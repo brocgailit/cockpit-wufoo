@@ -16,7 +16,7 @@
     var $this = this;
     var item;
     this.getData = function() {
-        return fetch(`/api/wufoo/forms?key=${$this.opts.key}`)
+        return fetch(`/api/wufoo/forms/?key=${$this.opts.key}`)
           .then(function(response) {
             return response.json()
           })
