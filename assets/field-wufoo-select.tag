@@ -10,13 +10,11 @@
     this.value = null;
 
     this.getData = function() {
-        $this.loading = true;
         return fetch(`/api/wufoo/forms/?token=${$this.opts.key}`)
           .then(function(response) {
             return response.json()
           })
           .then(function(response) {
-            $this.loading = false;
             var items =  response.Forms;
             if(items && items.length > 0) {
               return items.map(function(item) {
@@ -48,9 +46,11 @@
     }
 
     this.on('mount', async function() {
+        $this.loading = true;
         this.refs.input.value = this.root.$value;
         $this.item = this.$getValue(opts.bind + '_title');
         $this.forms = await this.getData()
+        $this.loading = false;
     });
   </script>
 
