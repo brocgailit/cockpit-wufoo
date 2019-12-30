@@ -16,6 +16,7 @@
           })
           .then(function(response) {
             var items =  response.Forms;
+            console.log(items);
             if(items && items.length > 0) {
               return items.map(function(item) {
                 return {
