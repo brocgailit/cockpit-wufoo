@@ -24,17 +24,6 @@ class WufooEndpoint {
 		return json_decode($res->getBody());
 	}
 
-	public function renderResponse($res, $return_fn) {
-
-		/* $status = $res->requestStatus;
-
-		if ( !$status->success ) {
-			return $status;		
-		} */
-
-		return $return_fn($res);
-	}
-
 }
 
 ?>

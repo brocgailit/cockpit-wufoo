@@ -17,24 +17,14 @@ class WufooApi extends Controller {
 	}
 
     public function index() {
-
-		$res = $this->wufoo->query("");
-
-		return $this->wufoo->renderResponse($res, function($res) {
-			return ['forms' => $res];
-		});
+		return $this->wufoo->query("");
 	}
 
 	public function forms($identifier) {
-
 		if (empty($identifier)) {
 			return $this->wufoo->query("forms.json", []);
 		}
-		$res = $this->wufoo->query("forms/$identifier.json", []);
-
-		return $this->wufoo->renderResponse($res, function($res) {
-			return ['form' => $res];
-		});
+		return $this->wufoo->query("forms/$identifier.json", []);
 	}
 
 }
