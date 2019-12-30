@@ -5,7 +5,7 @@
   </select>
   <script>
     var $this = this;
-    this.forms = [{value: 1, title: 'test'}];
+    this.forms = [];
     this.element = 'select';
     this.value = null;
 
@@ -45,14 +45,14 @@
         }
     }
 
-    this.on('mount', async function() {
+    this.on('mount', function() {
         $this.loading = true;
         this.refs.input.value = this.root.$value;
         $this.item = this.$getValue(opts.bind + '_title');
-        $this.forms = await this.getData()
-        $this.loading = false;
-
-        console.log($this.forms);
+        this.getData().then(forms => {
+            $this.forms = forms
+            $this.loading = false;
+        })
     });
   </script>
 
