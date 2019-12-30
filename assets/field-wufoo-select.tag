@@ -53,6 +53,7 @@
             $this.forms = forms;
             $this.loading = false;
             $this.update();
+            console.log($this.forms)
         })
     });
   </script>
