@@ -50,8 +50,9 @@
         this.refs.input.value = this.root.$value;
         $this.item = this.$getValue(opts.bind + '_title');
         this.getData().then(forms => {
-            $this.forms = forms
+            $this.forms = forms;
             $this.loading = false;
+            $this.update();
         })
     });
   </script>
