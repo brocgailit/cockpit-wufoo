@@ -1,4 +1,5 @@
 <field-wufoo-select>
+    {{ value }}
   <select ref="input" class="uk-select {opts.cls}" onchange="{changeOption}" show="{element == 'select'}">
     <option value="" disabled selected>{loading ? "loading..." : App.i18n.get("- Select -")}</option>
     <option value="{form.value}" each="{form,idx in forms}" selected="{form.value === value}">{form.title}</option>
