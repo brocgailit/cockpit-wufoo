@@ -3,7 +3,7 @@
 namespace Wufoo\Controller;
 
 use \LimeExtra\Controller;
-use Wufoo\Controller\ReviewsEndpoint;
+use Wufoo\Controller\WufooEndpoint;
 
 class WufooApi extends Controller {
 	private $wufoo;
@@ -11,17 +11,17 @@ class WufooApi extends Controller {
 	public function __construct($options) {
 		parent::__construct($options);
         $this->wufoo = new WufooEndpoint(
-			"https://".$this->app['config']['reviews-io']['subdomain'].".wufoo.com/api/v3/forms/",
-			$this->app['config']['reviews-io']['api_key']
+			"https://".$this->app['config']['wufoo']['subdomain'].".wufoo.com/api/v3/forms/",
+			$this->app['config']['wufoo']['api_key']
 		);
 	}
 
     public function index() {
 
-		$res = $this->wufoo->query('product/reviews/all');
+		$res = $this->wufoo->query('');
 
 		return $this->wufoo->renderResponse($res, function($res) {
-			return ['reviews' => $res];
+			return ['forms' => $res];
 		});
 	}
 

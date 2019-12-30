@@ -1,10 +1,10 @@
 <?php
 
-namespace ReviewsIO\Controller;
+namespace Wufoo\Controller;
 
 use GuzzleHttp\Client;
 
-class ReviewsEndpoint {
+class WufooEndpoint {
 	public $api_key;
 	private $client;
 
