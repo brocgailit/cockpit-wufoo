@@ -11,7 +11,7 @@ class WufooApi extends Controller {
 	public function __construct($options) {
 		parent::__construct($options);
         $this->wufoo = new WufooEndpoint(
-			"https://".$this->app['config']['wufoo']['subdomain'].".wufoo.com/api/v3/forms",
+			"https://".$this->app['config']['wufoo']['subdomain'].".wufoo.com/api/v3/",
 			$this->app['config']['wufoo']['api_key']
 		);
 	}
@@ -29,13 +29,13 @@ class WufooApi extends Controller {
 
 		if (empty($identifier)) {
 			
-			$res = $this->wufoo->query(".json", []);
+			$res = $this->wufoo->query("forms.json", []);
 
 			return $this->wufoo->renderResponse($res, function($res) {
 				return ['forms' => $res];
 			});
 		}
-		$res = $this->wufoo->query("/$identifier.json", []);
+		$res = $this->wufoo->query("forms/$identifier.json", []);
 
 		return $this->wufoo->renderResponse($res, function($res) {
 			return ['form' => $res];
