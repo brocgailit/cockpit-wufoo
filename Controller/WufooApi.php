@@ -28,7 +28,7 @@ class WufooApi extends Controller {
 	public function forms($identifier) {
 
 		if (empty($identifier)) {
-			return $this->wufoo->query("forms.json", ['pretty' => true]);
+			return $this->wufoo->query("forms.json", []);
 		}
 		$res = $this->wufoo->query("forms/$identifier.json", []);
 
