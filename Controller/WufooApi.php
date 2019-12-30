@@ -25,17 +25,15 @@ class WufooApi extends Controller {
 		});
 	}
 
-	public function product($sku) {
+	public function forms($identifier) {
 
-		if (empty($sku)) {
-			return ['error' => 'You must provide a product sku.'];
+		if (empty($identifier)) {
+			return ['error' => 'You must provide a form identifier.'];
 		}
-		$res = $this->wufoo->query('product/review', [
-			'sku' => $sku
-		]);
+		$res = $this->wufoo->query($identifier.".json", []);
 
 		return $this->wufoo->renderResponse($res, function($res) {
-			return ['reviews' => $res];
+			return ['form' => $res];
 		});
 	}
 
