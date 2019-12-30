@@ -11,14 +11,14 @@ class WufooApi extends Controller {
 	public function __construct($options) {
 		parent::__construct($options);
         $this->wufoo = new WufooEndpoint(
-			"https://".$this->app['config']['wufoo']['subdomain'].".wufoo.com/api/v3/forms/",
+			"https://".$this->app['config']['wufoo']['subdomain'].".wufoo.com/api/v3/forms",
 			$this->app['config']['wufoo']['api_key']
 		);
 	}
 
     public function index() {
 
-		$res = $this->wufoo->query('');
+		$res = $this->wufoo->query("");
 
 		return $this->wufoo->renderResponse($res, function($res) {
 			return ['forms' => $res];
@@ -28,9 +28,14 @@ class WufooApi extends Controller {
 	public function forms($identifier) {
 
 		if (empty($identifier)) {
-			return ['error' => 'You must provide a form identifier.'];
+			
+			$res = $this->wufoo->query(".json", []);
+
+			return $this->wufoo->renderResponse($res, function($res) {
+				return ['forms' => $res];
+			});
 		}
-		$res = $this->wufoo->query($identifier.".json", []);
+		$res = $this->wufoo->query("/$identifier.json", []);
 
 		return $this->wufoo->renderResponse($res, function($res) {
 			return ['form' => $res];
