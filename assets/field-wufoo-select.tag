@@ -49,7 +49,7 @@
         $this.loading = true;
         this.refs.input.value = this.root.$value;
         $this.item = this.$getValue(opts.bind + '_title');
-        this.getData().then(forms => {
+        this.getData().then(function(forms){
             $this.forms = forms;
             $this.loading = false;
             $this.update();
