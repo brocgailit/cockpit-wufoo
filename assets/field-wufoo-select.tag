@@ -52,6 +52,6 @@
       setTimeout(function() {
         $this.refs.input.value = ''
       },0);
-    });
+    }
   </script>
 </field-wufoo-select>
