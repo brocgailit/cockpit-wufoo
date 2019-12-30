@@ -1,6 +1,6 @@
 <field-wufoo-select>
     {{ value }}
-  <select ref="input" class="uk-select {opts.cls}" onchange="{changeOption}" show="{element == 'select'}">
+  <select ref="input" class="uk-select {opts.cls}" onchange="{changeOption}" show="{element == 'select'}" value="{ value }">
     <option value="" disabled selected>{loading ? "loading..." : App.i18n.get("- Select -")}</option>
     <option value="{form.value}" each="{form,idx in forms}" selected="{form.value === value}">{form.title}</option>
   </select>
@@ -40,8 +40,9 @@
     }.bind(this);
 
     changeOption(e) {
+        console.log($this.forms.some(f => f.value === e.target.value), $this.forms.find(f => f.value === e.target.value))
         if ($this.forms && $this.forms.some(f => f.value === e.target.value)) {
-            $this.value = $this.forms.find(f => f.value === e.target.value);
+            $this.value = $this.forms.find(f => f.value === e.target.value).value;
             $this.$setValue($this.value);
         }
     }
