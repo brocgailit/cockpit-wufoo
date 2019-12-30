@@ -45,7 +45,7 @@
       this.forms = await this.getData()
     });
 
-    App.$(this.root).on("selectitem.uk.autocomplete", function(e, data) {
+    this.selectForm = function(data) {
       $this.item = data.title;
       $this.$setValue(data.value, false, opts.bind);
       $this.$setValue(data.title, false, opts.bind + '_title');
