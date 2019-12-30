@@ -27,6 +27,10 @@ class WufooApi extends Controller {
 		return $this->wufoo->query("forms/$identifier.json", []);
 	}
 
+	public function fields($identifier) {
+		return $this->wufoo->query("forms/$identifier/fields.json", []);
+	}
+
 }
 
 ?>
