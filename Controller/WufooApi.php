@@ -24,6 +24,10 @@ class WufooApi extends Controller {
 		if (empty($identifier)) {
 			return $this->wufoo->query("forms.json", []);
 		}
+		if($this->req_is('post')) {
+			$data = json_decode(file_get_contents('php://input'), true);
+			return $this->wufoo->post('', $data);
+		}
 		return $this->wufoo->query("forms/$identifier.json", []);
 	}
 
