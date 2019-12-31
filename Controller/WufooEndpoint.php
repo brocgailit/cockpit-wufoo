@@ -27,7 +27,7 @@ class WufooEndpoint {
 	public function post($endpoint = '', $data) {
 		$res = $this->client->request('POST', $endpoint, [
 			'auth' => [$this->api_key, 'heavycraft'],
-			'json' => $data
+			'form_params' => $data
 		]);
 		return json_decode($res->getBody(), true);
 	}
